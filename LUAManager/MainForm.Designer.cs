@@ -240,9 +240,8 @@ namespace LUAManager
             this.encryptGameSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.encryptGameSelect.FormattingEnabled = true;
             this.encryptGameSelect.Items.AddRange(new object[] {
-            "Angry Birds Classic",
+            "Angry Birds Classic/Rio",
             "Angry Birds Seasons",
-            "Angry Birds Rio",
             "Angry Birds Space",
             "Angry Birds Star Wars",
             "Angry Birds Star Wars II",
@@ -409,9 +408,8 @@ namespace LUAManager
             this.decryptGameSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.decryptGameSelect.FormattingEnabled = true;
             this.decryptGameSelect.Items.AddRange(new object[] {
-            "Angry Birds Classic",
+            "Angry Birds Classic/Rio",
             "Angry Birds Seasons",
-            "Angry Birds Rio",
             "Angry Birds Space",
             "Angry Birds Star Wars",
             "Angry Birds Star Wars II",
