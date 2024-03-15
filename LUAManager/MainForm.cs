@@ -24,7 +24,6 @@ namespace LUAManager
             public static string whatWereDoing = "encrypt";
             public static string classicKey = "55534361505170413454534E56784D49317639534B39554330795A75416E6232";
             public static string seasonsKey = "7A65506865737435666151755832533241707265403472654368417445765574";
-            public static string rioKey = "55534361505170413454534E56784D49317639534B39554330795A75416E6232";
             public static string spaceKey = "526D67645A304A656E4C466757776B5976434C326C5361684662456846656334";
             public static string starWarsKey = "416E3874336D6E38553673706951307A4848723361316C6F44725261336D7445";
             public static string starWarsTwoKey = "4230706D3354416C7A6B4E3967687A6F65324E697A456C6C50644E3068516E69";
@@ -187,25 +186,21 @@ namespace LUAManager
                 }
                 else if (encryptGameSelect.SelectedIndex == 2)
                 {
-                    keyToUse = Info.rioKey;
+                    keyToUse = Info.spaceKey;
                 }
                 else if (encryptGameSelect.SelectedIndex == 3)
                 {
-                    keyToUse = Info.spaceKey;
+                    keyToUse = Info.starWarsKey;
                 }
                 else if (encryptGameSelect.SelectedIndex == 4)
                 {
-                    keyToUse = Info.starWarsKey;
+                    keyToUse = Info.starWarsTwoKey;
                 }
                 else if (encryptGameSelect.SelectedIndex == 5)
                 {
-                    keyToUse = Info.starWarsTwoKey;
-                }
-                else if (encryptGameSelect.SelectedIndex == 6)
-                {
                     keyToUse = Info.friendsKey;
                 }
-                else if (encryptGameSelect.SelectedIndex == 7)
+                else if (encryptGameSelect.SelectedIndex == 6)
                 {
                     keyToUse = customKeyEnc.Text;
                 }
@@ -299,34 +294,30 @@ namespace LUAManager
                 if (decryptGameSelect.SelectedIndex == 0)
                 {
                     keyToUse = Info.classicKey;
-                }
+                } 
                 else if (decryptGameSelect.SelectedIndex == 1)
                 {
                     keyToUse = Info.seasonsKey;
                 }
                 else if (decryptGameSelect.SelectedIndex == 2)
                 {
-                    keyToUse = Info.rioKey;
+                    keyToUse = Info.spaceKey;
                 }
                 else if (decryptGameSelect.SelectedIndex == 3)
                 {
-                    keyToUse = Info.spaceKey;
+                    keyToUse = Info.starWarsKey;
                 }
                 else if (decryptGameSelect.SelectedIndex == 4)
                 {
-                    keyToUse = Info.starWarsKey;
+                    keyToUse = Info.starWarsTwoKey;
                 }
                 else if (decryptGameSelect.SelectedIndex == 5)
                 {
-                    keyToUse = Info.starWarsTwoKey;
+                    keyToUse = Info.friendsKey;
                 }
                 else if (decryptGameSelect.SelectedIndex == 6)
                 {
-                    keyToUse = Info.friendsKey;
-                }
-                else if (decryptGameSelect.SelectedIndex == 7)
-                {
-                    keyToUse = customKeyDec.Text;
+                    keyToUse = customKeyEnc.Text;
                 }
                 if (decryptInputFile.Text == "")
                 {
