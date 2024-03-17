@@ -10,6 +10,7 @@
     <Authors>xxxman360</Authors>
     <Company>AB360</Company>
     <Copyright>(C) AB360 2021</Copyright>
+    <Configurations>Debug;Release;RelWithDebInfo</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
@@ -46,7 +47,7 @@
     <None Update="extras\java.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="extras\letsgo.wav">
+    <None Update="extras\goldenegg.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="extras\lzma.exe">

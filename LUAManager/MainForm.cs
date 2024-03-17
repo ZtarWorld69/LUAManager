@@ -21,16 +21,17 @@ namespace LUAManager
         }
         public static class Info
         {
-            public static string whatWereDoing = "encrypt";
+            public static string whatWereDoing = "decrypt";
             public static string classicKey = "55534361505170413454534E56784D49317639534B39554330795A75416E6232";
             public static string seasonsKey = "7A65506865737435666151755832533241707265403472654368417445765574";
+            public static string rioKey = "55534361505170413454534E56784D49317639534B39554330795A75416E6232";
             public static string spaceKey = "526D67645A304A656E4C466757776B5976434C326C5361684662456846656334";
             public static string starWarsKey = "416E3874336D6E38553673706951307A4848723361316C6F44725261336D7445";
             public static string starWarsTwoKey = "4230706D3354416C7A6B4E3967687A6F65324E697A456C6C50644E3068516E69";
             public static string friendsKey = "454A52626357683831594734597A6A664C41504D7373416E6E7A785161446E31";
 
             public static ProcessStartInfo psi = new ProcessStartInfo();
-            
+
 
         }
 
@@ -166,20 +167,20 @@ namespace LUAManager
             catch
             {
                 MessageBox.Show("The input file does not exist.", "Please choose a file", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return new[]{'j',};
+                return new[] { 'j', };
             }
-            
+
         }
         private void LetsGo_Click(object sender, EventArgs e)
         {
-            string keyToUse = "";   
-            SoundPlayer simpleSound = new SoundPlayer(Directory.GetCurrentDirectory() + "\\extras\\letsgo.wav");
+            string keyToUse = "";
+            SoundPlayer simpleSound = new SoundPlayer(Directory.GetCurrentDirectory() + "\\extras\\goldenegg.wav");
             if (Info.whatWereDoing == "encrypt") //Encrypt functions
             {
                 if (encryptGameSelect.SelectedIndex == 0)
                 {
                     keyToUse = Info.classicKey;
-                } 
+                }
                 else if (encryptGameSelect.SelectedIndex == 1)
                 {
                     keyToUse = Info.seasonsKey;
@@ -202,28 +203,26 @@ namespace LUAManager
                 }
                 else if (encryptGameSelect.SelectedIndex == 6)
                 {
-                    keyToUse = customKeyEnc.Text;
+                    keyToUse = customKeyDec.Text;
                 }
                 if (encryptInputFile.Text == "")
                 {
-                    MessageBox.Show("You have not selected a " + ((fileRadio.Checked) ? "file" : "folder of files") + " to encrypt", "Please choose a folder",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    MessageBox.Show("You have not selected a " + ((fileRadio.Checked) ? "file" : "folder of files") + " to encrypt", "Please choose a folder", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else if (encryptOutputFile.Text == "")
                 {
                     MessageBox.Show("You have not specified a " + ((fileRadio.Checked) ? "file" : "folder") + " to export to", "Please choose a folder", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                } 
+                }
                 else if (encryptInputFile.Text == encryptOutputFile.Text)
                 {
                     MessageBox.Show("The input and output " + ((fileRadio.Checked) ? "file" : "folder") + " cannot be the same because you\ncannot write to a files while they're being read.", "Overwrite Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else if (encryptGameSelect.SelectedIndex == 7 && customKeyEnc.Text == "")
+                else if (encryptGameSelect.SelectedIndex == 6 && customKeyEnc.Text == "")
                 {
                     MessageBox.Show("You need to paste a key into the box in order to use this option.", "No key entered", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    letsGoText.Text = "Getting ready to go, please wait...";
-                    letsGoText.Visible = true;
 
                     FileInfo[] fileInfos =
                         (fileRadio.Checked)
@@ -274,10 +273,9 @@ namespace LUAManager
                             OpenSSL("enc -K " + keyToUse + " -iv 00 -aes-256-cbc -in " + "\"" + file.FullName + "\"" + " -out " + "\"" + savePath + "\"");
                         }
                     }
-                    
-                    
+
+
                     simpleSound.Play();
-                    letsGoText.Text = "LET'S GOOO!";
 
                     string message =
                         (fileRadio.Checked)
@@ -285,8 +283,7 @@ namespace LUAManager
                         : ("All LUA files in " + folderBrowserDialog1.SelectedPath + " have been exported in encrypted form to\n" + folderBrowserDialog2.SelectedPath + "!");
 
                     MessageBox.Show(message, "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
-                    letsGoText.Visible = false;
+
                 }
             }
             if (Info.whatWereDoing == "decrypt") //Decrypt functions
@@ -294,7 +291,7 @@ namespace LUAManager
                 if (decryptGameSelect.SelectedIndex == 0)
                 {
                     keyToUse = Info.classicKey;
-                } 
+                }
                 else if (decryptGameSelect.SelectedIndex == 1)
                 {
                     keyToUse = Info.seasonsKey;
@@ -317,7 +314,7 @@ namespace LUAManager
                 }
                 else if (decryptGameSelect.SelectedIndex == 6)
                 {
-                    keyToUse = customKeyEnc.Text;
+                    keyToUse = customKeyDec.Text;
                 }
                 if (decryptInputFile.Text == "")
                 {
@@ -331,14 +328,12 @@ namespace LUAManager
                 {
                     MessageBox.Show("The input and output " + ((fileRadio.Checked) ? "file" : "folder") + " cannot be the same because you\ncannot write to a files while they're being read.", "Overwrite Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else if (decryptGameSelect.SelectedIndex == 7 && customKeyDec.Text == "")
+                else if (decryptGameSelect.SelectedIndex == 6 && customKeyDec.Text == "")
                 {
                     MessageBox.Show("You need to paste a key into the box in order to use this option.", "No key entered", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    letsGoText.Text = "Getting ready to go, please wait...";
-                    letsGoText.Visible = true;
 
                     FileInfo[] fileInfos =
                         (fileRadio.Checked)
@@ -419,10 +414,9 @@ namespace LUAManager
 
                     }
 
-                    
+
 
                     simpleSound.Play();
-                    letsGoText.Text = "LET'S GOOO!";
 
                     string message =
                         (fileRadio.Checked)
@@ -430,8 +424,7 @@ namespace LUAManager
                         : ("All LUA files in " + folderBrowserDialog1.SelectedPath + " have been exported in decrypted form to\n" + folderBrowserDialog2.SelectedPath + "!");
 
                     MessageBox.Show(message, "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
-                    letsGoText.Visible = false;
+
                 }
             }
             if (Info.whatWereDoing == "decode") //Decode functions
@@ -450,8 +443,6 @@ namespace LUAManager
                 }
                 else
                 {
-                    letsGoText.Text = "Getting ready to go, please wait...";
-                    letsGoText.Visible = true;
                     bool passedTest = true;
 
                     FileInfo[] fileInfos =
@@ -497,7 +488,6 @@ namespace LUAManager
                             else
                             {
                                 simpleSound.Play();
-                                letsGoText.Text = "LET'S GOOO!";
 
                                 string message =
                                     (fileRadio.Checked)
@@ -512,7 +502,6 @@ namespace LUAManager
                             MessageBox.Show("A valid installation of the Java JDK could not be found, please install a copy of it in order to use this feature.", "Java JDK not installed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-                    letsGoText.Visible = false;
                 }
             }
 
@@ -585,7 +574,7 @@ namespace LUAManager
 
         private void checkForFifthopt(object sender, EventArgs e)
         {
-            if (decryptGameSelect.SelectedIndex == 7)
+            if (decryptGameSelect.SelectedIndex == 6)
             {
                 customKeyDec.Visible = true;
             }
@@ -597,7 +586,7 @@ namespace LUAManager
 
         private void IndexChangeEnc(object sender, EventArgs e)
         {
-            if (encryptGameSelect.SelectedIndex == 7)
+            if (encryptGameSelect.SelectedIndex == 6)
             {
                 customKeyEnc.Visible = true;
             }
@@ -631,15 +620,15 @@ namespace LUAManager
 
             ResetFileChoices();
 
-            encryptInputLabel.Text = "File to be encrypted:";
+            encryptInputLabel.Text = "Input file:";
             encryptOutputLabel.Text = "Output file:";
             encryptBrotipLabel.Text = "Brotip: Newer versions of AB games always store LUAs in either 7z or LZMA\r\ncompression.";
 
-            decryptInputLabel.Text = "File to be decrypted:";
+            decryptInputLabel.Text = "Input file:";
             decryptOutputLabel.Text = "Output file:";
             decryptBrotipLabel.Text = "Brotip: Newer versions of AB games always store LUAs in either 7z or LZMA\r\ncompression.";
 
-            decodeInputLabel.Text = "File to be decoded:";
+            decodeInputLabel.Text = "Input file:";
             decodeOutputLabel.Text = "Output file:";
             decodeBrotipLabel.Text = "Brotip: Only decode the file if you know it's already decrypted\r\n";
         }
@@ -651,17 +640,35 @@ namespace LUAManager
 
             ResetFileChoices();
 
-            encryptInputLabel.Text = "Encrypt files from:";
-            encryptOutputLabel.Text = "Output to:";
+            encryptInputLabel.Text = "Input folder:";
+            encryptOutputLabel.Text = "Output folder:";
             encryptBrotipLabel.Text = "Brotip: Newer versions of AB games always store LUAs in either 7z or LZMA\r\ncompression.";
 
-            decryptInputLabel.Text = "Decrypt files from:";
-            decryptOutputLabel.Text = "Output to:";
+            decryptInputLabel.Text = "Input folder:";
+            decryptOutputLabel.Text = "Output folder:";
             decryptBrotipLabel.Text = "Brotip: Have 2 folders, one with the files to be decrypted, and another to send the files to.";
 
-            decodeInputLabel.Text = "Decode files from:";
-            decodeOutputLabel.Text = "Output to:";
+            decodeInputLabel.Text = "Input folder:";
+            decodeOutputLabel.Text = "Output folder:";
             decodeBrotipLabel.Text = "Brotip: Make sure all LUA files in the folder are not encrypted before you continue\r\n";
+        }
+
+        private void customKeyDec_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void autoUnzip_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void autoUnlzma_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SevenZipCheck_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
