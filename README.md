@@ -12,4 +12,4 @@ This fork was mainly made to test my C# skills and improve the program itself.
 # Credits
 * [xxxmän360](https://github.com/xxxman360) - Main programmer
 * [RSM](https://github.com/giroletm) - Version merging
-* [ABwebGamesFan](https://github.com/ABwebGamesFan) - Created this fork
+* [ZtarWorld69](https://github.com/ZtarWorld69) - Created this fork
