@@ -1,5 +1,5 @@
 # AB360 LUA Manager
-A program to decrypt, dissassmble, assmble, decode & encrypt the LUA scripts used in the Angry Birds games.
+A program to decrypt, decode, disassemble, assemble,  & encrypt the LUA scripts used in the Angry Birds games
 
 # About this fork
 This fork was mainly made to test my C# skills and improve the program itself.
